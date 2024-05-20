@@ -2,7 +2,7 @@
     <div class="product-catalog">
         <div v-for="product in products" :key="product.id" class="product">
             <div class="product-image">
-                <img :src="product.image" alt="imagem" >
+                <img :src="product.image" alt="imagem">
             </div>
             <h3>{{ product.name }}</h3>
             <p>{{ product.price }}</p>
@@ -11,21 +11,27 @@
 </template>
 
 <script>
+import config from '../config/config'
+import axios from 'axios'
+
 export default {
   name: 'ProductCatalog',
   data () {
     return {
-      products: [
-        { id: 1, name: 'Playstation 5', price: '$400', image: require('../assets/produtoPs5.png') },
-        { id: 2, name: 'Notebook', price: '$300', image: require('../assets/produtoNotebook.png') },
-        { id: 3, name: 'Iphone', price: '$700', image: require('../assets/produtoIphone.jpg') },
-        { id: 4, name: 'Câmera', price: '$700', image: require('../assets/produtoCamera.png') },
-        { id: 5, name: 'Carregador', price: '$50', image: require('../assets/produtoCarregador.jpg') },
-        { id: 6, name: 'Fone', price: '$100', image: require('../assets/produtoFone.png') },
-        { id: 7, name: 'Televisão', price: '$450', image: require('../assets/produtoTv.png') },
-        { id: 8, name: 'produtoEchodot', price: '$70', image: require('../assets/produtoEchodot.png') }
-      ]
+      products: []
     }
+  },
+  created () {
+    axios.get(`${config.apiURL}/produtos`)
+      .then((response) => {
+        this.products = response.data.map(product => ({
+          ...product,
+          image: require(`../assets/${product.image}`)
+        }))
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar os produtos:', error)
+      })
   }
 }
 </script>
