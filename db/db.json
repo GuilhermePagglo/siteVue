@@ -1,0 +1,12 @@
+{
+    "produtos": [
+        { "id": 1, "name": "Playstation 5", "price": "$400", "image": "produtoPs5.png" },
+        { "id": 2, "name": "Notebook", "price": "$300", "image": "produtoNotebook.png" },
+        { "id": 3, "name": "Iphone", "price": "$700", "image": "produtoIphone.jpg" },
+        { "id": 4, "name": "Câmera", "price": "$700", "image": "produtoCamera.png" },
+        { "id": 5, "name": "Carregador", "price": "$50", "image": "produtoCarregador.jpg" },
+        { "id": 6, "name": "Fone", "price": "$100", "image": "produtoFone.png" },
+        { "id": 7, "name": "Televisão", "price": "$450", "image": "produtoTv.png" },
+        { "id": 8, "name": "Echo Dot", "price": "$70", "image": "produtoEchodot.png" }
+    ]
+}
