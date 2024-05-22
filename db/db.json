@@ -58,23 +58,5 @@
     }
   ],
   "usuarios": [
-    {
-      "id": "5c67",
-      "nome": "joao barreto",
-      "telefone": 6199645489984985000,
-      "email": "joaobarreto@gmail.com"
-    },
-    {
-      "id": "fc6c",
-      "nome": "",
-      "telefone": "",
-      "email": ""
-    },
-    {
-      "id": "3bb6",
-      "nome": "Guilherme Soares",
-      "telefone": 61994092725,
-      "email": "guilherme.soares@pagglo.com"
-    }
   ]
 }
