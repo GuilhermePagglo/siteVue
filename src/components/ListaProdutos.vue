@@ -12,8 +12,7 @@
 </template>
 
 <script>
-import config from '../config/config'
-import axios from 'axios'
+import axios from '../config/axios'
 
 export default {
   name: 'ProductCatalog',
@@ -23,7 +22,7 @@ export default {
     }
   },
   created () {
-    axios.get(`${config.apiURL}/produtos`)
+    axios.get('/produtos')
       .then((response) => {
         this.products = response.data.map(product => ({
           ...product,

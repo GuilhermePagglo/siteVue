@@ -16,8 +16,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import config from '../config/config'
+import axios from '../config/axios'
 
 export default {
   name: 'TelaCompras',
@@ -28,7 +27,7 @@ export default {
   },
   created () {
     const productId = this.$route.params.productId
-    axios.get(`${config.apiURL}/produtos/${productId}`)
+    axios.get(`/produtos/${productId}`)
       .then((response) => {
         const product = response.data
         product.image = require(`../assets/${product.image}`)
