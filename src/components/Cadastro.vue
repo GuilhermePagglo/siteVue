@@ -1,52 +1,60 @@
 <template>
   <div id="app">
-        <p> {{ mensagem }} </p>
+    <p>{{ mensagem }}</p>
 
-        <p>Nome:</p>
-            <input type="text" v-on:input="setNome"> <br>
-        <p>Idade:</p>
-            <input type="number" v-on:input="setIdade"> <br>
-        <p>Cidade:</p>
-            <input type="text" v-model="cidade"> <br>
+    <p>Nome:</p>
+    <input type="text" v-model="novoUsuario.nome"> <br>
+    <p>Telefone:</p>
+    <input type="number" v-model="novoUsuario.telefone"> <br>
+    <p>Email:</p>
+    <input type="text" v-model="novoUsuario.email"> <br>
+    <button @click="cadastrarusuario">enviar</button>
 
-        <button v-on:click="setValor">Incrementar</button>
-
-        <p> meu nome é <span v-text="nome"></span>, tenho {{idade}} anos e moro em {{ inverteCidade }}</p>
-        <p>Quantidade de cliques: <span v-text="valor"></span></p>
-      </div>
+    <div v-for="usuario in usuarios" :key="usuario.id" class="usuario">
+      <h3>{{ usuario.nome }}</h3>
+      <p>{{ usuario.email }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from '../config/axios'
 export default {
   name: 'app',
   data () {
     return {
-      mensagem: 'Formulario em Vue',
-      nome: 'Guilherme',
-      idade: '21',
-      valor: 0,
-      cidade: 'Brasília'
+      mensagem: 'Bem-vindo!',
+      novoUsuario: {
+        nome: '',
+        telefone: '',
+        email: ''
+      },
+      usuarios: []
     }
+  },
+  created () {
+    axios.get('/usuarios')
+      .then((response) => {
+        this.usuarios = response.data
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar os usuarios:', error)
+      })
   },
   methods: {
-    setNome: function (event) {
-      this.nome = event.target.value
-    },
-    setIdade: function (event) {
-      this.idade = event.target.value
-    },
-    setValor: function (event) {
-      console.log(event)
-      this.valor++
-      this.inverterCidade()
-    },
-    inverterCidade: function () {
-      this.cidade = this.cidade.split('').reverse().join('')
-    }
-  },
-  computed: {
-    inverteCidade: function () {
-      return this.cidade.split('').reverse().join('')
+    cadastrarusuario () {
+      axios.post('/usuarios', this.novoUsuario)
+        .then((response) => {
+          this.usuarios.push(response.data)
+          this.novoUsuario = {
+            nome: '',
+            telefone: '',
+            email: ''
+          }
+        })
+        .catch((error) => {
+          console.error('Erro ao cadastrar o usuario:', error)
+        })
     }
   }
 }
@@ -79,17 +87,16 @@ button {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #329632;
     color: #fff;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #267826;
 }
 
 span {
     font-weight: bold;
 }
-
 </style>

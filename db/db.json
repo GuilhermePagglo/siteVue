@@ -1,12 +1,80 @@
 {
-    "produtos": [
-        { "id": 1, "name": "Playstation 5", "price": "$400", "image": "produtoPs5.png", "description": "Console de última geração da Sony." },
-        { "id": 2, "name": "Notebook", "price": "$300", "image": "produtoNotebook.png", "description": "Notebook potente para todas as suas necessidades." },
-        { "id": 3, "name": "Iphone", "price": "$700", "image": "produtoIphone.jpg", "description": "Smartphone da Apple com tecnologia de ponta." },
-        { "id": 4, "name": "Câmera", "price": "$700", "image": "produtoCamera.png", "description": "Câmera digital de alta resolução." },
-        { "id": 5, "name": "Carregador", "price": "$50", "image": "produtoCarregador.jpg", "description": "Carregador rápido e eficiente." },
-        { "id": 6, "name": "Fone", "price": "$100", "image": "produtoFone.png", "description": "Fone de ouvido com som de alta qualidade." },
-        { "id": 7, "name": "Televisão", "price": "$450", "image": "produtoTv.png", "description": "Smart TV com resolução 4K." },
-        { "id": 8, "name": "Echo Dot", "price": "$70", "image": "produtoEchodot.png", "description": "Assistente virtual da Amazon com controle de voz." }
-    ]
+  "produtos": [
+    {
+      "id": "1",
+      "name": "Playstation 5",
+      "price": "$400",
+      "image": "produtoPs5.png",
+      "description": "Console de última geração da Sony."
+    },
+    {
+      "id": "2",
+      "name": "Notebook",
+      "price": "$300",
+      "image": "produtoNotebook.png",
+      "description": "Notebook potente para todas as suas necessidades."
+    },
+    {
+      "id": "3",
+      "name": "Iphone",
+      "price": "$700",
+      "image": "produtoIphone.jpg",
+      "description": "Smartphone da Apple com tecnologia de ponta."
+    },
+    {
+      "id": "4",
+      "name": "Câmera",
+      "price": "$700",
+      "image": "produtoCamera.png",
+      "description": "Câmera digital de alta resolução."
+    },
+    {
+      "id": "5",
+      "name": "Carregador",
+      "price": "$50",
+      "image": "produtoCarregador.jpg",
+      "description": "Carregador rápido e eficiente."
+    },
+    {
+      "id": "6",
+      "name": "Fone",
+      "price": "$100",
+      "image": "produtoFone.png",
+      "description": "Fone de ouvido com som de alta qualidade."
+    },
+    {
+      "id": "7",
+      "name": "Televisão",
+      "price": "$450",
+      "image": "produtoTv.png",
+      "description": "Smart TV com resolução 4K."
+    },
+    {
+      "id": "8",
+      "name": "Echo Dot",
+      "price": "$70",
+      "image": "produtoEchodot.png",
+      "description": "Assistente virtual da Amazon com controle de voz."
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "5c67",
+      "nome": "joao barreto",
+      "telefone": 6199645489984985000,
+      "email": "joaobarreto@gmail.com"
+    },
+    {
+      "id": "fc6c",
+      "nome": "",
+      "telefone": "",
+      "email": ""
+    },
+    {
+      "id": "3bb6",
+      "nome": "Guilherme Soares",
+      "telefone": 61994092725,
+      "email": "guilherme.soares@pagglo.com"
+    }
+  ]
 }
