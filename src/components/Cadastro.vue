@@ -17,12 +17,16 @@
       <h2>Usuários Cadastrados</h2>
       <div v-for="usuario in usuarios" :key="usuario.id" class="usuario">
         <div class="user-details">
-          <h3>{{ usuario.nome }}</h3>
-          <p>{{ usuario.telefone }}</p>
-          <p>{{ usuario.email }}</p>
+          <h3 v-if="usuarioEditando !== usuario.id">{{ usuario.nome }}</h3>
+          <input type="text" v-else v-model="usuarioEditandoData.nome" placeholder="{{ usuario.nome }}"> <br>
+          <p v-if="usuarioEditando !== usuario.id">{{ usuario.telefone }}</p>
+          <input type="number" v-else v-model="usuarioEditandoData.telefone" placeholder="{{ usuario.telefone }}"> <br>
+          <p v-if="usuarioEditando !== usuario.id">{{ usuario.email }}</p>
+          <input type="text" v-else v-model="usuarioEditandoData.email" placeholder="{{ usuario.email }}"> <br>
         </div>
         <div class="user-actions">
-          <button class="edit-button">Editar</button>
+          <button v-if="usuarioEditando !== usuario.id" class="edit-button" @click="editarUsuario(usuario)">Editar</button>
+          <button v-else class="save-button" @click="salvarEdicao(usuario)">Salvar</button>
           <button class="delete-button" @click="deletarUsuario(usuario.id)">Excluir</button>
         </div>
       </div>
@@ -42,7 +46,13 @@ export default {
         telefone: '',
         email: ''
       },
-      usuarios: []
+      usuarios: [],
+      usuarioEditando: null,
+      usuarioEditandoData: {
+        nome: '',
+        telefone: '',
+        email: ''
+      }
     }
   },
   created () {
@@ -80,10 +90,28 @@ export default {
         .catch((error) => {
           console.error('Erro ao deletar o usuario:', error)
         })
+    },
+    editarUsuario (usuario) {
+      this.usuarioEditando = usuario.id
+      this.usuarioEditandoData = {
+        nome: usuario.nome,
+        telefone: usuario.telefone,
+        email: usuario.email
+      }
+    },
+    salvarEdicao (usuario) {
+      axios.put(`/usuarios/${usuario.id}`, this.usuarioEditandoData)
+        .then(() => {
+          usuario.nome = this.usuarioEditandoData.nome
+          usuario.telefone = this.usuarioEditandoData.telefone
+          usuario.email = this.usuarioEditandoData.email
+          this.usuarioEditando = null
+        })
+        .catch((error) => {
+          console.error('Erro ao salvar a edição do usuário:', error)
+        })
     }
-
   }
-
 }
 </script>
 
